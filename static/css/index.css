@@ -59,6 +59,22 @@ html body {
   background: #000000;
 }
 
+.bibtex-block pre {
+  background: #f1f5f9 !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  padding: 1.5rem !important;
+  font-size: 0.9rem !important;
+  overflow-x: auto;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.bibtex-block code {
+  background: #f1f5f9 !important;
+  color: #1e293b !important;
+  font-family: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace !important;
+}
+
 .bibtex-block pre code {
   white-space: pre-wrap;
 }
@@ -68,8 +84,6 @@ html body {
   font-size: 0.9em;
   color: #000;
 }
-
-
 
 .bal-block {
   display: flex;
