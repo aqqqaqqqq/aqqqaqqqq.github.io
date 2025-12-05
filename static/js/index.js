@@ -52,7 +52,7 @@ window.addEventListener('load', function() {
 
     // 加载模型并校准视角
     const loader = new GLTFLoader();
-    loader.load('static/models/smpl_model.glb', function(gltf) {
+    loader.load('static/models/smpl_model_1.glb', function(gltf) {
         const model = gltf.scene;
         model.position.set(0, 0, 0);
         scene.add(model);
