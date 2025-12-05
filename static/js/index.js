@@ -30,7 +30,7 @@ window.addEventListener('load', function() {
         0.1,
         1000
     );
-    camera.position.set(0, 1.5, 1.5);
+    camera.position.set(0, 0, 0);
     console.log('摄像机初始位置：', camera.position);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
