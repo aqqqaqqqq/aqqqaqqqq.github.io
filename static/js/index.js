@@ -1,7 +1,7 @@
-// index.js 顶部先导入 Three.js 及扩展（必须用完整 URL）
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.min.js';
-import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/controls/OrbitControls.js';
-import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/loaders/GLTFLoader.js';
+// index.js 顶部导入（用 importmap 映射的裸模块名）
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 // 等待页面加载完成后执行
 window.addEventListener('load', function() {
@@ -36,7 +36,7 @@ window.addEventListener('load', function() {
     renderer.setSize(container.clientWidth, container.clientHeight);
     container.appendChild(renderer.domElement);
 
-    // OrbitControls 直接用导入的类
+    // OrbitControls 直接使用导入的类
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.target.set(0, 1, 0);
     controls.update();
@@ -50,7 +50,7 @@ window.addEventListener('load', function() {
     dirLight.position.set(3, 10, 10);
     scene.add(dirLight);
 
-    // GLTFLoader 直接用导入的类
+    // GLTFLoader 直接使用导入的类
     const loader = new GLTFLoader();
     loader.load('static/models/smpl_model.glb', function(gltf) {
         const model = gltf.scene;
