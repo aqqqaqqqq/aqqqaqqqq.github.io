@@ -1,3 +1,9 @@
+// index.js 顶部先导入 Three.js 及扩展（必须用完整 URL）
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.min.js';
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/loaders/GLTFLoader.js';
+
+// 等待页面加载完成后执行
 window.addEventListener('load', function() {
     // ----------- Bulma 初始化 -----------
     var carousels = bulmaCarousel.attach('.carousel', {
@@ -10,6 +16,10 @@ window.addEventListener('load', function() {
 
     // ----------- SMPL Viewer 初始化 -----------
     const container = document.getElementById('smpl-container');
+    if (!container) {
+        console.error('smpl-container 元素不存在！');
+        return;
+    }
 
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0xf0f0f0);
@@ -26,7 +36,7 @@ window.addEventListener('load', function() {
     renderer.setSize(container.clientWidth, container.clientHeight);
     container.appendChild(renderer.domElement);
 
-    // 注意：这里改为 new OrbitControls（而非 THREE.OrbitControls）
+    // OrbitControls 直接用导入的类
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.target.set(0, 1, 0);
     controls.update();
@@ -40,7 +50,7 @@ window.addEventListener('load', function() {
     dirLight.position.set(3, 10, 10);
     scene.add(dirLight);
 
-    // 注意：这里改为 new GLTFLoader（而非 THREE.GLTFLoader）
+    // GLTFLoader 直接用导入的类
     const loader = new GLTFLoader();
     loader.load('static/models/smpl_model.glb', function(gltf) {
         const model = gltf.scene;
