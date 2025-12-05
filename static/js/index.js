@@ -39,13 +39,23 @@ window.addEventListener('load', function() {
     controls.maxDistance = 5.0;
     controls.update();
 
-    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1.2);
-    hemiLight.position.set(0, 2, 0);
-    scene.add(hemiLight);
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
+    keyLight.position.set(3, 5, 5);
+    keyLight.castShadow = false;
+    scene.add(keyLight);
 
-    const dirLight = new THREE.DirectionalLight(0xffffff, 1);
-    dirLight.position.set(3, 5, 5);
-    scene.add(dirLight);
+    const fillLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    fillLight.position.set(-5, 2, 2);
+    fillLight.castShadow = false;
+    scene.add(fillLight);
+
+    const rimLight = new THREE.DirectionalLight(0xffffff, 1.0);
+    rimLight.position.set(0, 3, -5);
+    rimLight.castShadow = false;
+    scene.add(rimLight);
+
+    const ambient = new THREE.AmbientLight(0xffffff, 0.35);
+    scene.add(ambient);
 
     // ============ 动画相关 ============
     let mixer;                 // AnimationMixer
