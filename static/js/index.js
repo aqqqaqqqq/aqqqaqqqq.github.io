@@ -30,8 +30,7 @@ window.addEventListener('load', function() {
         0.1,
         1000
     );
-    camera.position.set(0, 0, 0);
-    console.log('摄像机初始位置：', camera.position);
+    camera.position.set(0, 1.0, 2.0);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
@@ -40,6 +39,7 @@ window.addEventListener('load', function() {
     // OrbitControls 直接使用导入的类
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.target.set(0, 1, 0);
+    controls.enableReset = false;
     controls.update();
 
     // 灯光
