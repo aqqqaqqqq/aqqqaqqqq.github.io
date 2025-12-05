@@ -23,6 +23,10 @@
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.162.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.162.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/picklejs@1.0.4/dist/pickle.js"></script>
 </head>
 
 <body>
@@ -149,6 +153,11 @@
           </p>
         </div>
       </div>
+    </div>
+
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">🕺 SMPL Model Viewer</h2>
+      <div id="smpl-container"></div>
     </div>
     
     <div class="columns is-centered has-text-centered">
