@@ -106,7 +106,9 @@ window.addEventListener('load', function() {
             const center = new THREE.Vector3();
             box.getCenter(center);
 
-            controls.target.copy(center);
+            // 默认视角重置
+            camera.position.set(0, 0.5, 3);
+            controls.target.set(0, 0.8, 0);
             controls.update();
 
         }, undefined, err => {
