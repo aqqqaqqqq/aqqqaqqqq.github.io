@@ -107,8 +107,8 @@ window.addEventListener('load', function() {
             box.getCenter(center);
 
             // 默认视角重置
-            camera.position.set(0, 0.5, 3);
-            controls.target.set(0, 0.8, 0);
+            camera.position.set(center.x, center.y, center.z + 3);
+            controls.target.copy(center);
             controls.update();
 
         }, undefined, err => {
