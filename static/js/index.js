@@ -39,6 +39,7 @@ window.addEventListener('load', function() {
     controls.maxDistance = 5.0;
     controls.update();
 
+    // Lighting
     const keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
     keyLight.position.set(3, 5, 5);
     keyLight.castShadow = false;
@@ -58,54 +59,86 @@ window.addEventListener('load', function() {
     scene.add(ambient);
 
     // ============ 动画相关 ============
-    let mixer;                 // AnimationMixer
-    let clock = new THREE.Clock();   // 计算动画 deltaTime
-
-    // ============ 加载 GLB ============
+    let mixer = null;
+    let currentModel = null;
+    const clock = new THREE.Clock();
     const loader = new GLTFLoader();
-    loader.load('static/models/smpl_animated.glb', function(gltf) {
 
-        const model = gltf.scene;
-        model.position.set(0, 0, 0);
-        scene.add(model);
+    // ==============================
+    // 加载 GLB 函数（动态切换）
+    // ==============================
+    function loadGLB(path) {
 
-        // ================= 播放动画 =================
-        if (gltf.animations && gltf.animations.length > 0) {
-            mixer = new THREE.AnimationMixer(model);
-            const action = mixer.clipAction(gltf.animations[0]);
-            action.play();
-            console.log("Animation loaded and playing.");
-        } else {
-            console.warn("GLB 中不包含动画！");
+        // 清除旧模型
+        if (currentModel) {
+            scene.remove(currentModel);
+            currentModel.traverse(obj => {
+                if (obj.geometry) obj.geometry.dispose();
+                if (obj.material) {
+                    if (Array.isArray(obj.material)) {
+                        obj.material.forEach(m => m.dispose());
+                    } else {
+                        obj.material.dispose();
+                    }
+                }
+            });
+            currentModel = null;
         }
 
-        // ================= 自动模型居中 =================
-        const box = new THREE.Box3().setFromObject(model);
-        const center = new THREE.Vector3();
-        box.getCenter(center);
-        console.log("模型中心:", center);
+        mixer = null;
 
-        camera.position.y = center.y - 0.2;
-        controls.target.copy(center);
-        controls.update();
-        
-    }, undefined, function(error) {
-        console.error('Error loading animated SMPL model:', error);
-    });
+        loader.load(path, function(gltf) {
+            currentModel = gltf.scene;
+            scene.add(currentModel);
 
+            // ===== 播放动画 =====
+            if (gltf.animations && gltf.animations.length > 0) {
+                mixer = new THREE.AnimationMixer(currentModel);
+                const action = mixer.clipAction(gltf.animations[0]);
+                action.play();
+                console.log("Loaded animation:", path);
+            } else {
+                console.warn("No animation found in", path);
+            }
+
+            // ===== 模型居中 =====
+            const box = new THREE.Box3().setFromObject(currentModel);
+            const center = new THREE.Vector3();
+            box.getCenter(center);
+
+            controls.target.copy(center);
+            controls.update();
+
+        }, undefined, err => {
+            console.error("Failed to load GLB:", err);
+        });
+    }
+
+    // ==============================
+    // 监听下拉框
+    // ==============================
+    const selector = document.getElementById("glb-selector");
+    if (selector) {
+        selector.addEventListener("change", function() {
+            loadGLB(this.value);
+        });
+
+        // 初始加载默认模型
+        loadGLB(selector.value);
+    }
+
+    // ==============================
+    // Render Loop
+    // ==============================
     function animate() {
         requestAnimationFrame(animate);
 
-        // 更新动画
-        if (mixer) {
-            const delta = clock.getDelta();
-            mixer.update(delta);
-        }
+        if (mixer) mixer.update(clock.getDelta());
 
         renderer.render(scene, camera);
     }
     animate();
-
+    
     window.addEventListener('resize', () => {
         camera.aspect = container.clientWidth / container.clientHeight;
         camera.updateProjectionMatrix();
