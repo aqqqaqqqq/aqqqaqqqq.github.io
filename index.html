@@ -159,6 +159,20 @@
 
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">🕺 SMPL Model Viewer</h2>
+      <!-- ▼▼ 新增：GLB 选择框 ▼▼ -->
+      <div class="field has-text-centered" style="margin-bottom: 1rem;">
+        <label class="label">choose!</label>
+        <div class="control">
+          <div class="select is-medium">
+            <select id="glb-selector">
+              <option value="static/models/smpl_animated.glb">smpl_animated.glb</option>
+              <option value="static/models/smpl_idle.glb">smpl_idle.glb</option>
+              <option value="static/models/smpl_walk.glb">smpl_walk.glb</option>
+              <!-- 你可以继续添加更多模型 -->
+            </select>
+          </div>
+        </div>
+      </div>
       <div id="smpl-container"></div>
     </div>
     
