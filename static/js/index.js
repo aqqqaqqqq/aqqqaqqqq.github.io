@@ -112,6 +112,34 @@ window.addEventListener('load', function() {
             }
     
             currentModel = gltf.scene;
+
+            currentModel.traverse((child) => {
+                if (child.isMesh) {
+                    // 方法1: 使用顶点颜色替代材质颜色
+                    if (child.geometry.attributes.color) {
+                        // 创建使用顶点颜色的材质
+                        const vertexColorMaterial = new THREE.MeshStandardMaterial({
+                            vertexColors: true,  // 启用顶点颜色
+                            side: THREE.DoubleSide,
+                            metalness: 0.0,
+                            roughness: 0.5,
+                            flatShading: false
+                        });
+                        
+                        // 如果模型有原始材质，可以混合一些属性
+                        if (child.material) {
+                            vertexColorMaterial.opacity = child.material.opacity || 1.0;
+                            vertexColorMaterial.transparent = child.material.transparent || false;
+                        }
+                        
+                        child.material = vertexColorMaterial;
+                    }
+                    
+                    // 方法2: 如果只想高亮顶点颜色，可以这样
+                    // child.material.vertexColors = THREE.VertexColors;
+                }
+            });
+            
             scene.add(currentModel);
     
             if (gltf.animations && gltf.animations.length > 0) {
