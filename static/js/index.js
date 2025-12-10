@@ -113,32 +113,44 @@ window.addEventListener('load', function() {
     
             currentModel = gltf.scene;
 
+            let hasVertexColors = false;
             currentModel.traverse((child) => {
-                if (child.isMesh) {
-                    // 方法1: 使用顶点颜色替代材质颜色
-                    if (child.geometry.attributes.color) {
-                        // 创建使用顶点颜色的材质
-                        const vertexColorMaterial = new THREE.MeshStandardMaterial({
-                            vertexColors: true,  // 启用顶点颜色
-                            side: THREE.DoubleSide,
-                            metalness: 0.0,
-                            roughness: 0.5,
-                            flatShading: false
-                        });
-                        
-                        // 如果模型有原始材质，可以混合一些属性
-                        if (child.material) {
-                            vertexColorMaterial.opacity = child.material.opacity || 1.0;
-                            vertexColorMaterial.transparent = child.material.transparent || false;
-                        }
-                        
-                        child.material = vertexColorMaterial;
-                    }
-                    
-                    // 方法2: 如果只想高亮顶点颜色，可以这样
-                    // child.material.vertexColors = THREE.VertexColors;
+                if (child.isMesh && child.geometry && child.geometry.attributes.color) {
+                    hasVertexColors = true;
+                    console.log("找到顶点颜色属性:", child.geometry.attributes.color);
                 }
             });
+            
+            if (hasVertexColors) {
+                // 正确应用顶点颜色，同时保留材质的其他属性
+                currentModel.traverse((child) => {
+                    if (child.isMesh && child.geometry && child.geometry.attributes.color) {
+                        // 方法1: 在原始材质基础上启用顶点颜色
+                        if (child.material) {
+                            // 创建材质副本，避免修改原始材质
+                            const newMaterial = child.material.clone();
+                            newMaterial.vertexColors = true;
+                            newMaterial.needsUpdate = true;
+                            child.material = newMaterial;
+                        } else {
+                            // 如果没有材质，创建一个新材质
+                            child.material = new THREE.MeshStandardMaterial({
+                                vertexColors: true,
+                                side: THREE.DoubleSide,
+                                metalness: 0.3,
+                                roughness: 0.7,
+                                flatShading: false
+                            });
+                        }
+                        
+                        // 确保几何体标记为需要更新
+                        child.geometry.attributes.color.needsUpdate = true;
+                        child.geometry.attributes.position.needsUpdate = true;
+                    }
+                });
+            } else {
+                console.warn("模型没有顶点颜色属性");
+            }
             
             scene.add(currentModel);
     
