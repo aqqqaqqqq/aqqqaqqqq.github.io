@@ -117,11 +117,11 @@ window.addEventListener('load', function() {
                 if (child.isMesh && child.geometry && child.geometry.attributes.color) {
                     // 如果几何体有顶点颜色，启用它
                     console.log('Found vertex colors in:', child.name);
-                    const basicMaterial = new THREE.MeshBasicMaterial({
-                        vertexColors: true, // 启用顶点颜色
+                    const lambertMaterial = new THREE.MeshLambertMaterial({
+                        vertexColors: true,
                         side: THREE.DoubleSide
                     });
-                    child.material = basicMaterial;
+                    child.material = lambertMaterial;
                     console.log('Applied vertex color material to:', child.name);
                 }
             });
