@@ -16,12 +16,12 @@ window.addEventListener('load', function() {
         const maxOffset = -(totalWidth - viewportWidth);
         let offset = 0;
         rightBtn.addEventListener("click", () => {
-            offset -= videoWidth;
+            offset -= slideWidth;
             if (offset < maxOffset) offset = maxOffset;
             gallery.style.transform = `translateX(${offset}px)`;
         });
         leftBtn.addEventListener("click", () => {
-            offset += videoWidth;
+            offset += slideWidth;
             if (offset > 0) offset = 0;
             gallery.style.transform = `translateX(${offset}px)`;
         });
