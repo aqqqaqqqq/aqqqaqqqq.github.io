@@ -14,6 +14,7 @@ window.addEventListener('load', function() {
         const viewportWidth = document.querySelector(".video-viewport").offsetWidth;
         const totalWidth = items.length * slideWidth - gap;
         const maxOffset = -(totalWidth - viewportWidth);
+        let offset = 0;
         rightBtn.addEventListener("click", () => {
             offset -= videoWidth;
             if (offset < maxOffset) offset = maxOffset;
