@@ -78,32 +78,26 @@ html body {
 
 .video-viewport {
   overflow: hidden;        /* 5 video width */
-  width: calc(200px * 5);  /* video width 200px */
+  width: calc(180px * 5 + 16px * 4);  /* video width 200px */
 }
 
 .video-gallery {
   display: flex;
+  gap: 16px;
   transition: transform 0.4s ease;
 }
 
-.gallery-video {
-  width: 200px;
-  height: 120px;
-  object-fit: cover;
-  margin-right: 5px;
-}
-
 .video-item {
-  width: 200px;
+  width: 180px;
   flex-shrink: 0;
   text-align: center;
 }
 
 .gallery-video {
   width: 100%;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 6px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
 }
 
 .video-caption {
