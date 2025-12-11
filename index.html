@@ -176,20 +176,21 @@
       <div class="column is-10">
         <h2 class="title is-3">🖼️ Dataset</h2>
         <div id="results-carousel" class="carousel results-carousel">
-          <div class="item item-video1">
-            <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-              <source src="static/videos/dataset3.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="item item-video2">
-            <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-              <source src="/" type="video/mp4">
-            </video>
-          </div>
-          <div class="item item-video3">
-            <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-              <source src="/" type="video/mp4">
-            </video>
+          <div class="video-gallery-container">
+            <button class="gallery-nav left" id="scrollLeftBtnStairs">&lt;</button>
+            <div class="video-viewport">
+              <div class="video-gallery" id="videoGalleryStairs">
+                <video class="gallery-video" src="/" autoplay muted playsinline loop></video>
+                <video class="gallery-video" src="/" autoplay muted playsinline loop></video>
+                <video class="gallery-video" src="/" autoplay muted playsinline loop></video>
+                <video class="gallery-video" src="/" autoplay muted playsinline loop></video>
+                <video class="gallery-video" src="/" autoplay muted playsinline loop></video>
+                <video class="gallery-video" src="/" autoplay muted playsinline loop></video>
+                <video class="gallery-video" src="/" autoplay muted playsinline loop></video>
+                <video class="gallery-video" src="/" autoplay muted playsinline loop></video>
+              </div>
+            </div>
+            <button class="gallery-nav right" id="scrollRightBtnStairs">&gt;</button>
           </div>
         </div>
       </div>
