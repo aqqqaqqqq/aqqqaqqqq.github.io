@@ -146,7 +146,7 @@ window.addEventListener('load', function() {
                             newMaterial.emissiveIntensity = 0.6;              // 自发光强度
                             newMaterial.vertexColors = true;
                             newMaterial.needsUpdate = true;
-                            newMaterial.roughness = 0.2;      // 降低粗糙度
+                            newMaterial.roughness = 0.7;      // 降低粗糙度
                             newMaterial.metalness = 0.0;      // 无金属感
                             newMaterial.envMapIntensity = 2.0; // 环境贴图强度
                             child.material = newMaterial;
