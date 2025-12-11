@@ -93,6 +93,25 @@ html body {
   margin-right: 5px;
 }
 
+.video-item {
+  width: 200px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.gallery-video {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.video-caption {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
 .bibtex-block pre {
   background: #f1f5f9 !important;
   border: 1px solid #e2e8f0 !important;
