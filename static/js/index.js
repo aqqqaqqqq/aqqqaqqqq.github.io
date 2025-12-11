@@ -64,23 +64,25 @@ window.addEventListener('load', function() {
     controls.update();
 
     // Lighting
-    const keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.5);
     keyLight.position.set(3, 5, 5);
     keyLight.castShadow = false;
     scene.add(keyLight);
 
-    const fillLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    const fillLight = new THREE.DirectionalLight(0xffffff, 1.0);
     fillLight.position.set(-5, 2, 2);
     fillLight.castShadow = false;
     scene.add(fillLight);
 
-    const rimLight = new THREE.DirectionalLight(0xffffff, 1.0);
+    const rimLight = new THREE.DirectionalLight(0xffffff, 1.5);
     rimLight.position.set(0, 3, -5);
     rimLight.castShadow = false;
     scene.add(rimLight);
 
-    const ambient = new THREE.AmbientLight(0xffffff, 0.35);
+    const ambient = new THREE.AmbientLight(0xffffff, 0.8);
     scene.add(ambient);
+    const hemi = new THREE.HemisphereLight(0xffffff, 0x444444, 1.0);
+    scene.add(hemi);
 
     // ============ 动画相关 ============
     const clock = new THREE.Clock();
