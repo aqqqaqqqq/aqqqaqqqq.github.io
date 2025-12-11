@@ -8,9 +8,10 @@ window.addEventListener('load', function() {
         const leftBtn = document.getElementById("scrollLeftBtnStairs");
         const rightBtn = document.getElementById("scrollRightBtnStairs");
 
-        const videoWidth = 205;
+        const videoWidth = 180 + 16;
+        const items = gallery.querySelectorAll(".video-item").length;
         let offset = 0;
-        const maxOffset = -(gallery.children.length - 5) * videoWidth;
+        const maxOffset = -(items - 5) * videoWidth;
 
         rightBtn.addEventListener("click", () => {
             offset -= videoWidth;
