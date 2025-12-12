@@ -142,13 +142,13 @@ window.addEventListener('load', function() {
                     if (child.isMesh && child.geometry && child.geometry.attributes.color) {
                         if (child.material) {
                             const newMaterial = child.material.clone();
-                            newMaterial.emissive = new THREE.Color(0x222222);  // 增加自发光
-                            newMaterial.emissiveIntensity = 0.6;              // 自发光强度
+                            newMaterial.emissive = new THREE.Color(0x111111);  // 增加自发光
+                            newMaterial.emissiveIntensity = 0.2;              // 自发光强度
                             newMaterial.vertexColors = true;
                             newMaterial.needsUpdate = true;
                             newMaterial.roughness = 0.7;      // 降低粗糙度
                             newMaterial.metalness = 0.0;      // 无金属感
-                            newMaterial.envMapIntensity = 2.0; // 环境贴图强度
+                            newMaterial.envMapIntensity = 1.0; // 环境贴图强度
                             child.material = newMaterial;
                         }
                         child.geometry.attributes.color.needsUpdate = true;
