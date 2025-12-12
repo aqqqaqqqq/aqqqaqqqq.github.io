@@ -64,21 +64,21 @@ window.addEventListener('load', function() {
     controls.update();
 
     // Lighting
-    const keyLight = new THREE.DirectionalLight(0xffffff, 2.0);
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.0);
     keyLight.position.set(3, 5, 5);
     scene.add(keyLight);
     
-    const fillLight = new THREE.DirectionalLight(0xffffff, 1.5);
+    const fillLight = new THREE.DirectionalLight(0xffffff, 1.0);
     fillLight.position.set(-4, 2, -3);
     scene.add(fillLight);
     
-    const topLight = new THREE.DirectionalLight(0xffffff, 2.0);
+    const topLight = new THREE.DirectionalLight(0xffffff, 1.0);
     topLight.position.set(0, 6, 0);
     scene.add(topLight);
 
-    const ambient = new THREE.AmbientLight(0xffffff, 1.5);
+    const ambient = new THREE.AmbientLight(0xffffff, 1.0);
     scene.add(ambient);
-    const hemi = new THREE.HemisphereLight(0xffffff, 0x444444, 2.0);
+    const hemi = new THREE.HemisphereLight(0xffffff, 0x444444, 1.0);
     scene.add(hemi);
 
     const clock = new THREE.Clock();
@@ -146,7 +146,7 @@ window.addEventListener('load', function() {
                             // newMaterial.emissiveIntensity = 0.2;              // 自发光强度
                             newMaterial.vertexColors = true;
                             newMaterial.needsUpdate = true;
-                            newMaterial.roughness = 0.7;      // 降低粗糙度
+                            newMaterial.roughness = 1.0;      // 降低粗糙度
                             newMaterial.metalness = 0.0;      // 无金属感
                             newMaterial.envMapIntensity = 1.0; // 环境贴图强度
                             child.material = newMaterial;
