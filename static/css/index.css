@@ -12,14 +12,38 @@ body {
   padding: 3rem 1.5rem;
 }
 
-header {
-  text-align: center;
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
   margin-bottom: 3rem;
 }
 
-header h1 {
+.profile-left {
+  flex: 0 0 auto;
+  margin-left: 2rem;
+}
+
+.profile-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-pic {
+  width: 300px;
+  height: 200px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid #ccc;
+}
+
+.profile-right h1 {
+  margin: 0;
   font-size: 2.5rem;
-  margin-bottom: 0.3rem;
 }
 
 .subtitle {
@@ -31,6 +55,11 @@ header h1 {
   color: #2563eb;
   text-decoration: none;
   margin: 0 0.3rem;
+}
+
+.links i {
+  margin-right: 0.3rem;
+  vertical-align: middle;
 }
 
 .links a:hover {
@@ -63,4 +92,18 @@ footer {
   font-size: 0.9rem;
   color: #888;
   margin-top: 3rem;
+}
+
+a {
+  color: #09c8ce;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #0d9f08;
 }
