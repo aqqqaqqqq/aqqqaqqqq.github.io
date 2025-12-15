@@ -1,174 +1,66 @@
-html body {
-  font-family: 'Noto Sans', sans-serif;
-  background-color: #fafafa;
-}
-
-/* head */
-.head-section {
-  padding-bottom: 1.5em;
-}
-
-.publisher {
-  font-size: 1.1em;
-  font-weight: bold;
-  padding-bottom: 0.5em;
-}
-
-.author-block {
-  display: inline-block;
-}
-
-.author-block a {
-  color: hsl(204, 86%, 53%) !important;
-}
-
-.author-block a:hover {
-  text-decoration: underline;
-}
-
-.eql-cntrb { 
-  font-size: smaller;
-}
-
-.link-block {
-  margin-top: 1em;
-}
-
-
-/* content */
-.content-section {
-  padding-top: 0em;
-  padding-bottom: 1.5em;
-}
-
-.results-carousel {
-  overflow: hidden;
-}
-
-.results-carousel .item {
-  overflow: hidden;
-  margin: 0 2em;
-  padding-bottom: 2em;
-}
-
-.results-carousel video {
+/* ================= index.css ================= */
+body {
   margin: 0;
-}
-
-.slider-pagination .slider-page {
-  background: #000000;
-}
-
-.video-gallery-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.gallery-nav {
-  background: #0008;
-  border: none;
-  color: white;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 10;
-  font-size: 20px;
-  border-radius: 6px;
-}
-
-.video-viewport {
-  overflow: hidden;        /* 5 video width */
-  width: calc(170px * 5 + 10px * 4);  /* video width */
-}
-
-.video-gallery {
-  display: flex;
-  gap: 10px;
-  transition: transform 0.4s ease;
-}
-
-.video-item {
-  width: 170px;
-  flex-shrink: 0;
-  text-align: center;
-}
-
-.gallery-video {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  border-radius: 8px;
-}
-
-.video-caption {
-  margin-top: 6px;
-  font-size: 0.9rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f7f7f7;
   color: #333;
 }
 
-.bibtex-block pre {
-  background: #f1f5f9 !important;
-  border: 1px solid #e2e8f0 !important;
-  border-radius: 12px !important;
-  padding: 1.5rem !important;
-  font-size: 0.9rem !important;
-  overflow-x: auto;
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
 }
 
-.bibtex-block code {
-  background: #f1f5f9 !important;
-  color: #1e293b !important;
-  font-family: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace !important;
+header {
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
-.bibtex-block pre code {
-  white-space: pre-wrap;
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.3rem;
 }
 
-
-.footer span {
-  font-size: 0.9em;
-  color: #000;
+.subtitle {
+  color: #666;
+  margin-bottom: 1rem;
 }
 
-.bal-block {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  align-items: stretch;
-  align-content: stretch;
-  width: 100%;
-  aspect-ratio: 16/9;
+.links a {
+  color: #2563eb;
+  text-decoration: none;
+  margin: 0 0.3rem;
 }
 
-#smpl-container {
-  width: 100%;
-  height: 600px;
-  margin: 2rem auto;
-  background: #e5e7eb;
+.links a:hover {
+  text-decoration: underline;
+}
+
+section {
+  background: #ffffff;
   border-radius: 12px;
-  overflow: hidden;
-  position: relative;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
 }
 
-
-/* @media all and (max-width: 479px) {
-  .mainSection {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: nowrap;
-      justify-content: space-around;
-      align-items: stretch;
-      align-content: stretch;
-      width: 100%;
-      height: 700px;
-      padding: 10px;
-  }
-  .bal-container {
-      margin: 10px 0;
-  }
+section h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
+ul {
+  padding-left: 1.2rem;
+}
 
+li {
+  margin-bottom: 0.5rem;
+}
+
+footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 3rem;
+}
